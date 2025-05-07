@@ -62,7 +62,7 @@
                 <ProfileCharacterFormat/>
               </DataFormat>
               <JSONArray elementType="repeating" isMappable="false" isNode="true" key="14" name="Array">
-                <JSONArrayElement isMappable="true" isNode="true" key="15" maxOccurs="-1" minOccurs="0" name="ArrayElement1" dataType="character">
+                <JSONArrayElement dataType="character" isMappable="true" isNode="true" key="15" maxOccurs="-1" minOccurs="0" name="ArrayElement1">
                   <DataFormat>
                     <ProfileCharacterFormat/>
                   </DataFormat>
