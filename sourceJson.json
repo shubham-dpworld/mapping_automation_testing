@@ -1,9 +1,21 @@
-{
-      "discrepancyTypeCode": "string",
-      "visitStatusCode": "string",
-      "shortlandCount": "integer",
-      "docTypeCode": "string",
-      "bolUserDefinedCode3": "string",
-      "qty": "integer"
-}
+[
+      {
+            "discrepancyTypeCode": "string",
+            "visitStatusCode": "string",
+            "shortlandCount": "integer",
+            "docTypeCode": "string",
+            "bolUserDefinedCode3": "string",
+            "qty": "integer",
+            "tests": {
+                  "test1": "this is test1",
+                  "test2": "this is test2"
+            },
+            "testArray": [
+                  {
+                        "name": "value"
+                  }
+            ]
+      }
+]
+
 
