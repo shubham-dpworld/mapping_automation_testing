@@ -187,9 +187,9 @@ if __name__ == "__main__":
     print("Starting Boomi mapping generation script...")
 
     xml_output = generate_boomi_map(
-        excel_path="/Users/shubham.s/Desktop/mapping_automation_testing/AI_Field_Mapping.xlsx",
-        source_component_xml_path="/Users/shubham.s/Desktop/mapping_automation_testing/sourceProfile.xml",
-        target_component_xml_path="/Users/shubham.s/Desktop/mapping_automation_testing/destinationProfile.xml",
+        excel_path="AI_Field_Mapping.xlsx",
+        source_component_xml_path="sourceProfile.xml",
+        target_component_xml_path="destinationProfile.xml",
         source_col="Source Field (Dropdown)",
         target_col="Target Field",
         from_profile_id="4d8b52d3-64c5-46a3-a037-db4e54feea9f",
@@ -197,7 +197,7 @@ if __name__ == "__main__":
     )
 
     if xml_output:
-        output_path = "/Users/shubham.s/Desktop/mapping_automation_testing/generated_boomi_map.xml"
+        output_path = "generated_boomi_map.xml"
         with open(output_path, "w") as f:
             f.write(xml_output)
         print(f"✅ Boomi XML generated successfully at {output_path}")
