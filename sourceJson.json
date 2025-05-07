@@ -1,0 +1,9 @@
+{
+      "discrepancyTypeCode": "string",
+      "visitStatusCode": "string",
+      "shortlandCount": "integer",
+      "docTypeCode": "string",
+      "bolUserDefinedCode3": "string",
+      "qty": "integer"
+}
+

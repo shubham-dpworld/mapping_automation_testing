@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<bns:Component xmlns:bns="http://api.platform.boomi.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" branchId="Qjo2OTgxOA" branchName="main" createdDate="2025-05-06T10:35:30Z" currentVersion="true" deleted="false" folderFullPath="DPW Sub Account 1/ZZZ_Users/Mapping Automation" folderId="Rjo3NjI1Mzcz" folderName="Mapping Automation" modifiedDate="2025-05-06T10:35:30Z" name="Generated Map from Excel" type="transform.map" version="1">
+  <bns:encryptedValues/>
+  <bns:description>Auto-generated field mapping from Excel</bns:description>
+  <bns:object>
+    <Map fromProfile="4d8b52d3-64c5-46a3-a037-db4e54feea9f" toProfile="c6054768-73bb-4d11-bfe6-0b6a5602c5f0">
+      <Mappings>
+        <Mapping fromKey="1" fromKeyPath="*[@key='1']/*[@key='2']/*[@key='3']" fromNamePath="Root/Object/discrepancyTypeCode" fromType="profile" toKey="1" toKeyPath="*[@key='1']/*[@key='2']/*[@key='1']" toNamePath="Root/Object/discrepancyTypeCode" toType="profile"/>
+        <Mapping fromKey="2" fromKeyPath="*[@key='1']/*[@key='2']/*[@key='4']" fromNamePath="Root/Object/visitStatusCode" fromType="profile" toKey="2" toKeyPath="*[@key='1']/*[@key='2']/*[@key='2']" toNamePath="Root/Object/visitStatusCode" toType="profile"/>
+        <Mapping fromKey="3" fromKeyPath="*[@key='1']/*[@key='2']/*[@key='5']" fromNamePath="Root/Object/shortlandCount" fromType="profile" toKey="3" toKeyPath="*[@key='1']/*[@key='2']/*[@key='3']" toNamePath="Root/Object/shortlandCount" toType="profile"/>
+        <Mapping fromKey="4" fromKeyPath="*[@key='1']/*[@key='2']/*[@key='6']" fromNamePath="Root/Object/docTypeCode" fromType="profile" toKey="4" toKeyPath="*[@key='1']/*[@key='2']/*[@key='4']" toNamePath="Root/Object/docTypeCode" toType="profile"/>
+        <Mapping fromKey="5" fromKeyPath="*[@key='1']/*[@key='2']/*[@key='7']" fromNamePath="Root/Object/bolUserDefinedCode3" fromType="profile" toKey="5" toKeyPath="*[@key='1']/*[@key='2']/*[@key='5']" toNamePath="Root/Object/bolUserDefinedCode3" toType="profile"/>
+        <Mapping fromKey="6" fromKeyPath="*[@key='1']/*[@key='2']/*[@key='8']" fromNamePath="Root/Object/qty" fromType="profile" toKey="6" toKeyPath="*[@key='1']/*[@key='2']/*[@key='6']" toNamePath="Root/Object/qty" toType="profile"/>
+      </Mappings>
+      <Functions optimizeExecutionOrder="true"/>
+      <Defaults/>
+      <DocumentCacheJoins/>
+    </Map>
+  </bns:object>
+</bns:Component>
