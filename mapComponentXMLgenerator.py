@@ -22,6 +22,15 @@ def extract_paths_from_json_profile(profile_xml_path):
     print(f"Extracted {len(mappings)} field mappings from {profile_xml_path}")
     return mappings
 
+def extract_main_node(parent_path):
+    parts = parent_path.split('/')
+
+    filtered_parts = [
+        part for part in parts
+        if part not in ['Root', 'Object', 'Array'] and not re.match(r'ArrayElement\d*$', part)
+    ]
+
+    return '/'.join(filtered_parts) + '/' if filtered_parts else ''
 
 def traverse_and_extract_mappings(element, parent_name_path, parent_key_path, mappings):
     is_mappable = element.get('isMappable') == 'true'
@@ -38,8 +47,10 @@ def traverse_and_extract_mappings(element, parent_name_path, parent_key_path, ma
         key_part = f"*[@key='{element_key}']"
         current_key_path = f"{current_key_path}/{key_part}" if current_key_path else key_part
 
+    filtered_parent_path = extract_main_node(parent_name_path);
+    
     if is_mappable and element_name and element_key:
-        mappings[element_name] = {
+        mappings[filtered_parent_path + element_name] = {
             "name_path": current_name_path,
             "key_path": current_key_path
         }
@@ -48,11 +59,9 @@ def traverse_and_extract_mappings(element, parent_name_path, parent_key_path, ma
     for child in element:
         traverse_and_extract_mappings(child, current_name_path, current_key_path, mappings)
 
-
 def normalize_field_name(field_name):
     field_name = re.sub(r'\[\*\]', '', field_name)
-    if '.' in field_name:
-        field_name = field_name.split('.')[-1]
+    field_name = field_name.replace('.', '/')
     return field_name.strip()
 
 
@@ -192,8 +201,8 @@ if __name__ == "__main__":
         target_component_xml_path="destinationProfile.xml",
         source_col="Source Field (Dropdown)",
         target_col="Target Field",
-        from_profile_id="4d8b52d3-64c5-46a3-a037-db4e54feea9f",
-        to_profile_id="c6054768-73bb-4d11-bfe6-0b6a5602c5f0"
+        from_profile_id="273c6754-54ba-4c54-ae6b-566d82e407e1",
+        to_profile_id="273c6754-54ba-4c54-ae6b-566d82e407e1"
     )
 
     if xml_output:
