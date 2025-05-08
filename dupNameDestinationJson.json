@@ -1,0 +1,10 @@
+{
+    "name": "John",
+    "age": 30,
+    "driver": [
+        {
+            "name": "Doe",
+            "city": "New York"
+        }
+    ]
+}

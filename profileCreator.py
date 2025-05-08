@@ -148,12 +148,12 @@ def generate_xml(json_data):
 
 
 if __name__ == "__main__":
-    with open("sourceJson.json", "r") as f:
+    with open("destinationJson.json", "r") as f:
         json_obj = json.load(f, object_pairs_hook=OrderedDict)
 
     xml_output = generate_xml(json_obj)
 
-    with open("sourceProfile.xml", "w") as f:
+    with open("destinationProfile.xml", "w") as f:
         f.write(xml_output)
 
     print("✅ Boomi XML generated successfully.")
