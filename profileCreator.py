@@ -108,6 +108,9 @@ def generate_xml(json_data):
 
     key_counter = [1]  # start at 1 to match Root's key
 
+    print("Processing JSON data...")
+    print(f"JSON data type: {type(json_data)}")
+    print(json_data)
     if isinstance(json_data, list):
         key_counter[0] += 1
         array = SubElement(root, "JSONArray", {
@@ -148,12 +151,14 @@ def generate_xml(json_data):
 
 
 if __name__ == "__main__":
-    with open("sourceJson.json", "r") as f:
+    # with open("sourceJson.json", "r") as f:
+    with open("destinationJson.json", "r") as f:
         json_obj = json.load(f, object_pairs_hook=OrderedDict)
 
     xml_output = generate_xml(json_obj)
 
-    with open("sourceProfile.xml", "w") as f:
+    with open("destinationProfile.xml", "w") as f:
+    # with open("sourceProfile.xml", "w") as f:    
         f.write(xml_output)
 
     print("✅ Boomi XML generated successfully.")

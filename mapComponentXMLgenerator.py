@@ -30,7 +30,7 @@ def extract_main_node(parent_path):
         if part not in ['Root', 'Object', 'Array'] and not re.match(r'ArrayElement\d*$', part)
     ]
 
-    return '/'.join(filtered_parts) + '/' if filtered_parts else ''
+    return '/'.join(filtered_parts) if filtered_parts else ''
 
 def traverse_and_extract_mappings(element, parent_name_path, parent_key_path, mappings):
     is_mappable = element.get('isMappable') == 'true'
@@ -47,10 +47,10 @@ def traverse_and_extract_mappings(element, parent_name_path, parent_key_path, ma
         key_part = f"*[@key='{element_key}']"
         current_key_path = f"{current_key_path}/{key_part}" if current_key_path else key_part
 
-    filtered_parent_path = extract_main_node(parent_name_path);
+    filtered_parent_path = extract_main_node(current_name_path);
     
     if is_mappable and element_name and element_key:
-        mappings[filtered_parent_path + element_name] = {
+        mappings[filtered_parent_path] = {
             "name_path": current_name_path,
             "key_path": current_key_path
         }
@@ -62,7 +62,7 @@ def traverse_and_extract_mappings(element, parent_name_path, parent_key_path, ma
 def normalize_field_name(field_name):
     field_name = re.sub(r'\[\*\]', '', field_name)
     field_name = field_name.replace('.', '/')
-    return field_name.strip()
+    return field_name.lstrip('/').strip()
 
 
 def extract_final_key(path):
@@ -201,8 +201,8 @@ if __name__ == "__main__":
         target_component_xml_path="destinationProfile.xml",
         source_col="Source Field (Dropdown)",
         target_col="Target Field",
-        from_profile_id="273c6754-54ba-4c54-ae6b-566d82e407e1",
-        to_profile_id="273c6754-54ba-4c54-ae6b-566d82e407e1"
+        from_profile_id="492a2466-e0d5-4b64-b7a1-9a5976aeca28",
+        to_profile_id="a6cd2b27-ad22-4025-8dbc-400eb76baf8c"
     )
 
     if xml_output:

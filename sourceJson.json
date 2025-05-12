@@ -1,5 +1,6 @@
 [
       {
+            "name":"shubham",
             "discrepancyTypeCode": "string",
             "visitStatusCode": "string",
             "shortlandCount": "integer",
@@ -13,9 +14,10 @@
             "testArray": [
                   {
                         "name": "value"
+                  },
+                  {
+                        "name":""
                   }
             ]
       }
 ]
-
-
