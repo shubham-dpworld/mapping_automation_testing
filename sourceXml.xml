@@ -1,0 +1,10 @@
+<Company>
+    <Department name="Engineering">
+        <Employee>
+            <ID>101</ID>
+            <Name>John Doe</Name>
+            <Role>Software Developer</Role>
+            <Salary>80000</Salary>
+        </Employee>
+    </Department>
+</Company>

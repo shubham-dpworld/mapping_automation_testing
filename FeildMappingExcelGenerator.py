@@ -205,32 +205,36 @@ def get_edi_field_descriptions(edi_fields):
     return call_gemini_api(prompt)
 
 def create_excel_mapping(source_fields, target_fields, mappings, edi_descriptions=None):
-    wb = Workbook()
-    ws = wb.active
-    ws.title = "Field Mapping"
+    try:
+        wb = Workbook()
+        ws = wb.active
+        ws.title = "Field Mapping"
 
-    headers = ["Source Field", "Target Field", "AI Suggested Mapping", "Description"]
-    ws.append(headers)
-    for cell in ws[1]:
-        cell.fill = PatternFill(start_color="FFD700", end_color="FFD700", fill_type="solid")
-        cell.font = Font(bold=True)
+        headers = ["Source Field", "Target Field", "AI Suggested Mapping", "Description"]
+        ws.append(headers)
+        for cell in ws[1]:
+            cell.fill = PatternFill(start_color="FFD700", end_color="FFD700", fill_type="solid")
+            cell.font = Font(bold=True)
 
-    for source in source_fields:
-        target_match = mappings.get(source, "")
-        description = edi_descriptions.get(source, "") if edi_descriptions else ""
-        ws.append([source, "", target_match, description])
+        for source in source_fields:
+            target_match = json.dumps(mappings.get(source, ""), indent=2) if isinstance(mappings.get(source, ""), dict) else mappings.get(source, "")
+            description = edi_descriptions.get(source, "") if edi_descriptions else ""
+            ws.append([source, "", target_match, description])
 
-    dv = DataValidation(type="list", formula1=f'"{','.join(target_fields)}"', showDropDown=True)
-    ws.add_data_validation(dv)
-    for row in ws.iter_rows(min_row=2, min_col=2, max_col=2, max_row=1+len(source_fields)):
-        for cell in row:
-            dv.add(cell)
+        dv = DataValidation(type="list", formula1=f'"{','.join(target_fields)}"', showDropDown=True)
+        ws.add_data_validation(dv)
+        for row in ws.iter_rows(min_row=2, min_col=2, max_col=2, max_row=1+len(source_fields)):
+            for cell in row:
+                dv.add(cell)
 
-    for column_cells in ws.columns:
-        length = max(len(str(cell.value)) if cell.value else 0 for cell in column_cells)
-        ws.column_dimensions[column_cells[0].column_letter].width = length + 5
+        for column_cells in ws.columns:
+            length = max(len(str(cell.value)) if cell.value else 0 for cell in column_cells)
+            ws.column_dimensions[column_cells[0].column_letter].width = length + 5
 
-    return wb
+        return wb
+    except Exception as e:
+        print(f"Error creating Excel mapping: {str(e)}")
+        return None
 
 # Main function
 def main(source_type, source_data, target_type, target_data):
@@ -246,7 +250,7 @@ def main(source_type, source_data, target_type, target_data):
         wb = create_excel_mapping(source_fields, target_fields, mappings, edi_descriptions)
         file_path = "/Users/ankit.raj/Developer/mapping_automation_testing/FieldMapping.xlsx"
         wb.save(file_path)
-        encoded_excel = None  # Since the file is saved locally, no need to encode it
+        encoded_excel = None
         print(f"Excel file saved at: {file_path}")
 
         return {

@@ -3,6 +3,12 @@ from xml.etree.ElementTree import Element, SubElement, tostring
 from xml.dom.minidom import parseString
 from collections import OrderedDict
 
+folder_id = 'Rjo3NjQ3ODEx'
+folder_path = 'DPW Sub Account 1/ZZZ_Users/Mapping Automation'
+branch_id = 'Qjo2OTgxOA'
+branch_name = 'main'
+boomi_component_bns_url = 'http://api.platform.boomi.com/'
+boomi_component_xsi_url = 'http://www.w3.org/2001/XMLSchema-instance'
 
 def process_obj(obj_elem, data, key_counter):
     for field_name, value in data.items():
@@ -78,18 +84,18 @@ def process_obj(obj_elem, data, key_counter):
                 process_obj(inner_obj, value[0], key_counter)
 
 
-def generate_xml(json_data):
+def generate_profile_xml(json_data,isSource=True):
     component = Element("bns:Component", {
-        "xmlns:bns": "http://api.platform.boomi.com/",
-        "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
-        "branchId": "Qjo2OTgxOA",
-        "branchName": "main",
+        "xmlns:bns": boomi_component_bns_url,
+        "xmlns:xsi": boomi_component_xsi_url,
+        "branchId": branch_id,
+        "branchName": branch_name,
         "currentVersion": "true",
         "deleted": "false",
-        "folderFullPath": "DPW Sub Account 1/ZZZ_Users/Mapping Automation",
-        "folderId": "Rjo3NjI1Mzcz",
-        "folderName": "Automation",
-        "name": "destinationProfile",
+        "folderFullPath": folder_path,
+        "folderId": folder_id,
+        "folderName": folder_path.split("/")[-1],
+        "name": "sourceProfile" if isSource else "destinationProfile",
         "type": "profile.json",
         "version": "1"
     })
@@ -108,9 +114,6 @@ def generate_xml(json_data):
 
     key_counter = [1]  # start at 1 to match Root's key
 
-    print("Processing JSON data...")
-    print(f"JSON data type: {type(json_data)}")
-    print(json_data)
     if isinstance(json_data, list):
         key_counter[0] += 1
         array = SubElement(root, "JSONArray", {
@@ -151,14 +154,15 @@ def generate_xml(json_data):
 
 
 if __name__ == "__main__":
-    # with open("sourceJson.json", "r") as f:
-    with open("destinationJson.json", "r") as f:
+    with open("sourceJson.json", "r") as f:
         json_obj = json.load(f, object_pairs_hook=OrderedDict)
 
-    xml_output = generate_xml(json_obj)
 
-    with open("destinationProfile.xml", "w") as f:
-    # with open("sourceProfile.xml", "w") as f:    
+
+    json_data = json.loads(json_obj)
+    xml_output = generate_profile_xml(json_data)
+
+    with open("sourceProfile.xml", "w") as f:
         f.write(xml_output)
 
     print("✅ Boomi XML generated successfully.")

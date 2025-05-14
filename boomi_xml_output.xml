@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bns:Component xmlns:bns="http://api.platform.boomi.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" branchId="Qjo2OTgxOA" branchName="main" currentVersion="true" deleted="false" folderFullPath="DPW Sub Account 1/ZZZ_Users/Mapping Automation" folderId="Rjo3NjQ3ODEx" folderName="Mapping Automation" name="sourceProfile" type="profile.xml" version="1">
+  <bns:encryptedValues/>
+  <bns:description/>
+  <bns:object>
+    <XMLProfile modelVersion="2" strict="true">
+      <ProfileProperties>
+        <XMLGeneralInfo/>
+        <XMLOptions encoding="utf8" implicitElementOrdering="true" parseRespectMaxOccurs="true" respectMinOccurs="false" respectMinOccursAlways="false"/>
+      </ProfileProperties>
+      <DataElements>
+        <XMLElement dataType="character" isMappable="true" isNode="true" key="1" name="Company" maxOccurs="1" minOccurs="1" useNamespace="-1">
+          <DataFormat>
+            <ProfileCharacterFormat/>
+          </DataFormat>
+          <XMLElement dataType="character" isMappable="true" isNode="true" key="2" name="Department" maxOccurs="1" minOccurs="0" useNamespace="-1">
+            <DataFormat>
+              <ProfileCharacterFormat/>
+            </DataFormat>
+            <XMLAttribute dataType="character" isMappable="true" isNode="true" key="3" name="name" required="false" useNamespace="-1">
+              <DataFormat>
+                <ProfileCharacterFormat/>
+              </DataFormat>
+            </XMLAttribute>
+            <XMLElement dataType="character" isMappable="true" isNode="true" key="4" name="Employee" maxOccurs="1" minOccurs="0" useNamespace="-1">
+              <DataFormat>
+                <ProfileCharacterFormat/>
+              </DataFormat>
+              <XMLElement dataType="character" isMappable="true" isNode="true" key="5" name="ID" maxOccurs="1" minOccurs="0" useNamespace="-1">
+                <DataFormat>
+                  <ProfileCharacterFormat/>
+                </DataFormat>
+              </XMLElement>
+              <XMLElement dataType="character" isMappable="true" isNode="true" key="6" name="Name" maxOccurs="1" minOccurs="0" useNamespace="-1">
+                <DataFormat>
+                  <ProfileCharacterFormat/>
+                </DataFormat>
+              </XMLElement>
+              <XMLElement dataType="character" isMappable="true" isNode="true" key="7" name="Role" maxOccurs="1" minOccurs="0" useNamespace="-1">
+                <DataFormat>
+                  <ProfileCharacterFormat/>
+                </DataFormat>
+              </XMLElement>
+              <XMLElement dataType="character" isMappable="true" isNode="true" key="8" name="Salary" maxOccurs="1" minOccurs="0" useNamespace="-1">
+                <DataFormat>
+                  <ProfileCharacterFormat/>
+                </DataFormat>
+              </XMLElement>
+            </XMLElement>
+          </XMLElement>
+        </XMLElement>
+      </DataElements>
+      <Namespaces>
+        <XMLNamespace key="-1" name="Empty Namespace">
+          <Types/>
+        </XMLNamespace>
+      </Namespaces>
+      <tagLists/>
+    </XMLProfile>
+  </bns:object>
+</bns:Component>
