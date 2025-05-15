@@ -1,0 +1,19 @@
+{
+    "Company": {
+        "Department": {
+            "name": "Engineering",
+            "Employees": [
+                {
+                    "ID": 101,
+                    "Name": "Onkit"
+                },
+                {
+                    "ID": 101,
+                    "Name": "John Doe",
+                    "Role": "Software Developer",
+                    "Salary": 80000
+                }
+            ]
+        }
+    }
+}

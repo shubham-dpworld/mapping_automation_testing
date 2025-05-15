@@ -1,23 +1,34 @@
-[
-      {
-            "name":"shubham",
-            "discrepancyTypeCode": "string",
-            "visitStatusCode": "string",
-            "shortlandCount": "integer",
-            "docTypeCode": "string",
-            "bolUserDefinedCode3": "string",
-            "qty": "integer",
-            "tests": {
-                  "test1": "this is test1",
-                  "test2": "this is test2"
-            },
-            "testArray": [
+{
+      "Company": {
+            "Teams": [
                   {
-                        "name": "value"
+                        "TeamName": "Alpha",
+                        "Members": [
+                              {
+                                    "ID": 1,
+                                    "Name": "Tom"
+                              },
+                              {
+                                    "ID": 2,
+                                    "Name": "Jerry",
+                                    "Role": "Tester"
+                              }
+                        ]
                   },
                   {
-                        "name":""
+                        "TeamName": "Beta",
+                        "Members": [
+                              {
+                                    "ID": 3
+                              },
+                              {
+                                    "ID": 4,
+                                    "Name": "Spike",
+                                    "Role": "Developer",
+                                    "Experience": 3
+                              }
+                        ]
                   }
             ]
       }
-]
+}

@@ -154,15 +154,13 @@ def generate_profile_xml(json_data,isSource=True):
 
 
 if __name__ == "__main__":
-    with open("sourceJson.json", "r") as f:
+    with open("/Users/ankit.raj/Developer/mapping_automation_testing/Imporntant/jsonProfileSample.json", "r") as f:
         json_obj = json.load(f, object_pairs_hook=OrderedDict)
 
+    # json_data = json.loads(json_obj)
+    xml_output = generate_profile_xml(json_obj)
 
-
-    json_data = json.loads(json_obj)
-    xml_output = generate_profile_xml(json_data)
-
-    with open("sourceProfile.xml", "w") as f:
+    with open("/Users/ankit.raj/Developer/mapping_automation_testing/Imporntant/jsonProfileXml.xml", "w") as f:
         f.write(xml_output)
 
     print("✅ Boomi XML generated successfully.")
